@@ -27,6 +27,7 @@ public class HomeActivity extends Activity {
 	
 	public void takePicture(View view){
 		// TODO: open camera prompt
+		startActivity(new Intent(this, ImagePreviewActivity.class));
 	}
 
 }

@@ -23,8 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.noteright.GalleryActivity"
-            android:label="@string/title_activity_gallery"
+            android:name="com.noteright.ImagePreviewActivity"
+            android:label="@string/title_activity_image_preview"
             android:parentActivityName="com.noteright.HomeActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

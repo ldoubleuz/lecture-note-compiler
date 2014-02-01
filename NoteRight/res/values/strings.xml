@@ -8,5 +8,7 @@
     <string name="to_gallery_button">To Gallery</string>
     <string name="title_text">NoteRight</string>
     <string name="take_pic_button">Take Picture</string>
-
+    <string name="title_activity_image_preview">Image Preview</string>
+    <string name="save_button">Save</string>
+    <string name="delete_button">Delete</string>
 </resources>
