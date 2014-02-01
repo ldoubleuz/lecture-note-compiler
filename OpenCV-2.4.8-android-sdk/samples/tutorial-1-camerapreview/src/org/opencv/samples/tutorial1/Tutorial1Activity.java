@@ -4,11 +4,16 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,6 +28,7 @@ public class Tutorial1Activity extends Activity implements CvCameraViewListener2
     private CameraBridgeViewBase mOpenCvCameraView;
     private boolean              mIsJavaCamera = true;
     private MenuItem             mItemSwitchCamera = null;
+    private Mat m = null;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -62,6 +68,11 @@ public class Tutorial1Activity extends Activity implements CvCameraViewListener2
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
 
         mOpenCvCameraView.setCvCameraViewListener(this);
+        
+    	Bitmap b = BitmapFactory.decodeFile("/mnt/img.jpg");
+    	m = new Mat (b.getWidth(),b.getHeight(),CvType.CV_8UC1);
+    	Utils.bitmapToMat(b, m);
+    	Imgproc.cvtColor(m, m, Imgproc.COLOR_RGB2GRAY);
     }
 
     @Override
@@ -76,7 +87,10 @@ public class Tutorial1Activity extends Activity implements CvCameraViewListener2
     public void onResume()
     {
         super.onResume();
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        //OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        OpenCVLoader.initDebug();
+        mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+    
     }
 
     public void onDestroy() {
@@ -126,6 +140,6 @@ public class Tutorial1Activity extends Activity implements CvCameraViewListener2
     }
 
     public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-        return inputFrame.rgba();
+    		return m;
     }
 }

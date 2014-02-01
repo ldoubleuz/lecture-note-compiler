@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 
 public class ImagePreviewActivity extends Activity {
@@ -17,8 +20,18 @@ public class ImagePreviewActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_image_preview);
 		
+		Intent intent = getIntent();
+		String filepath = intent.getStringExtra(HomeActivity.CAM_FILEPATH_KEY);
+		Log.e("butts", filepath);
+		
 		ImageView imgPreview = (ImageView) findViewById(R.id.proc_image_preview);
-		imgPreview.setImageResource(R.drawable.test);
+		Bitmap bitmapImg = BitmapFactory.decodeFile(filepath);
+		if(bitmapImg == null){
+			imgPreview.setImageResource(R.drawable.blank_img);
+		}
+		else{
+			imgPreview.setImageBitmap(bitmapImg);
+		}
 
 		// Show the Up button in the action bar.
 		setupActionBar();
