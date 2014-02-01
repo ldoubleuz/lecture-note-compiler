@@ -76,7 +76,10 @@ public class Tutorial1Activity extends Activity implements CvCameraViewListener2
     public void onResume()
     {
         super.onResume();
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        //OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_3, this, mLoaderCallback);
+        OpenCVLoader.initDebug();
+        mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+    
     }
 
     public void onDestroy() {
