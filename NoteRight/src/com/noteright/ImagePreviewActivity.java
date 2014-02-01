@@ -1,5 +1,10 @@
 package com.noteright;
 
+import org.opencv.android.Utils;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -15,6 +20,18 @@ import android.os.Build;
 
 public class ImagePreviewActivity extends Activity {
 
+	//opencv stuff
+	private void process(Bitmap b){
+		
+    	Mat m = new Mat (b.getWidth(),b.getHeight(),CvType.CV_8UC1);
+
+    	Utils.bitmapToMat(b, m);
+    	
+    	Imgproc.cvtColor(m, m, Imgproc.COLOR_RGB2GRAY);
+		
+		Utils.matToBitmap(m, b);
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,6 +43,10 @@ public class ImagePreviewActivity extends Activity {
 		
 		ImageView imgPreview = (ImageView) findViewById(R.id.proc_image_preview);
 		Bitmap bitmapImg = BitmapFactory.decodeFile(filepath);
+		
+		process(bitmapImg);
+		
+		
 		if(bitmapImg == null){
 			imgPreview.setImageResource(R.drawable.blank_img);
 		}

@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -83,6 +86,9 @@ public class HomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+        OpenCVLoader.initDebug();
+        //mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+    
 	}
 
 	@Override
