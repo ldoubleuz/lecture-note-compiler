@@ -6,5 +6,7 @@
     <string name="hello_world">Hello, I am a default page.</string>
     <string name="title_activity_gallery">Gallery</string>
     <string name="to_gallery_button">To Gallery</string>
+    <string name="title_text">NoteRight</string>
+    <string name="take_pic_button">Take Picture</string>
 
 </resources>

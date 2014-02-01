@@ -24,5 +24,9 @@ public class HomeActivity extends Activity {
 	public void toGalleryPage(View view){
 		// TODO: wtf i dunno
 	}
+	
+	public void takePicture(View view){
+		// TODO: open camera prompt
+	}
 
 }

@@ -6,17 +6,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".HomeActivity" >
+    tools:context=".HomeActivity"
+    android:orientation="vertical" >
 
-    <Button
+    <TextView
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/to_gallery_button" 
-        android:onClick="toGalleryPage"/>
-
-    <ImageView
+        android:layout_height="0dp"
+        android:text="@string/title_text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_gravity="center" />
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/test"
-        />
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="2"
+        android:layout_gravity="center"
+    >
+        
+	    <Button
+	        android:id="@+id/take_pic_button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/take_pic_button" 
+	        android:onClick="takePicture"
+	        
+	        />
+	
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/test"
+	        />
+    </LinearLayout>
 </LinearLayout>
